@@ -109,9 +109,9 @@ void ClickGui::renderTooltip(std::string* text) {
 		currentTooltipPos.y - 2.f,
 		currentTooltipPos.x + (textPadding * 2) + textWidth + 2.f,
 		currentTooltipPos.y + textHeight + 2.f);
-	DrawUtils::fillRectangle(rectPos, MC_Color(13, 29, 48), 1.0f);
-	DrawUtils::drawRectangle(rectPos, MC_Color(255, 255, 255), 1.f, 0.5f);
-	DrawUtils::drawText(textPos, text, MC_Color(255, 255, 255), textSize);
+	DrawUtils::fillRectangle(rectPos, MC_Color(0, 0, 0), 1.0f);
+	DrawUtils::drawRectangle(rectPos, MC_Color(0, 20, 0), 1.f, 0.5f);
+	DrawUtils::drawText(textPos, text, MC_Color(0, 150, 150), textSize);
 }
 
 void ClickGui::renderCategory(Category category) {
@@ -254,7 +254,7 @@ void ClickGui::renderCategory(Category category) {
 
 			// Text
 			if (allowRender)
-				DrawUtils::drawText(textPos, &textStr, mod->isEnabled() ? MC_Color(255, 255, 255) : MC_Color(200, 200, 200), textSize);
+				DrawUtils::drawText(textPos, &textStr, mod->isEnabled() ? MC_Color(0, 150, 150) : MC_Color(200, 200, 200), textSize);
 
 			// Settings
 			{
@@ -321,7 +321,7 @@ void ClickGui::renderCategory(Category category) {
 										textPos.x + textHeight - textPadding,
 										textPos.y + textHeight - textPadding);
 
-									DrawUtils::drawRectangle(boxPos, MC_Color(255, 255, 255), isFocused ? 1 : 0.8f, 0.5f);
+									DrawUtils::drawRectangle(boxPos, MC_Color(0, 0, 0), isFocused ? 1 : 0.8f, 0.5f);
 
 									if (setting->value->_bool) {
 										DrawUtils::setColor(28, 107, 201, 1);
@@ -344,7 +344,7 @@ void ClickGui::renderCategory(Category category) {
 
 									std::string elTexto = name;
 									windowSize->x = fmax(windowSize->x, DrawUtils::getTextWidth(&elTexto, textSize) + 10 /* because we add 10 to text padding + checkbox*/);
-									DrawUtils::drawText(textPos, &elTexto, isFocused ? MC_Color(1.0f, 1.0f, 1.0f) : MC_Color(0.8f, 0.8f, 0.8f), textSize);
+									DrawUtils::drawText(textPos, &elTexto, isFocused ? MC_Color(0.0f, 0.2f, 0.2f) : MC_Color(0.0f, 0.8f, 0.8f), textSize);
 									currentYOffset += textHeight + (textPadding * 2);
 								}
 							} break;
@@ -359,7 +359,7 @@ void ClickGui::renderCategory(Category category) {
 
 									std::string elTexto = name;
 									windowSize->x = fmax(windowSize->x, DrawUtils::getTextWidth(&elTexto, textSize) + 5 /* because we add 5 to text padding*/);
-									DrawUtils::drawText(textPos, &elTexto, MC_Color(1.0f, 1.0f, 1.0f), textSize);
+									DrawUtils::drawText(textPos, &elTexto, MC_Color(0.0f, 0.8f, 0.8f), textSize);
 									currentYOffset += textPadding + textHeight;
 									rectPos.w = currentYOffset;
 									DrawUtils::fillRectangle(rectPos, moduleColor, backgroundAlpha);
@@ -385,7 +385,7 @@ void ClickGui::renderCategory(Category category) {
 										const bool areWeFocused = rect.contains(&mousePos);
 
 										DrawUtils::fillRectangle(rectPos, moduleColor, backgroundAlpha);              // Background
-										DrawUtils::drawRectangle(rect, MC_Color(1.0f, 1.0f, 1.0f), 1.f, backgroundAlpha);  // Slider background
+										DrawUtils::drawRectangle(rect, MC_Color(0.0f, 0.0f, 0.0f), 1.f, backgroundAlpha);  // Slider background
 
 										const float minValue = setting->minValue->_float;
 										const float maxValue = setting->maxValue->_float - minValue;
@@ -407,13 +407,13 @@ void ClickGui::renderCategory(Category category) {
 											std::string text = str;
 											mid.x -= DrawUtils::getTextWidth(&text, textSize) / 2;
 
-											DrawUtils::drawText(mid, &text, MC_Color(255, 255, 255), textSize);
+											DrawUtils::drawText(mid, &text, MC_Color(0, 150, 150), textSize);
 										}
 
 										// Draw Progress
 										{
 											rect.z = rect.x + value;
-											DrawUtils::fillRectangle(rect, MC_Color(28, 107, 201), (areWeFocused || setting->isDragging) ? 1.f : 0.8f);
+											DrawUtils::fillRectangle(rect, MC_Color(0, 0, 0), (areWeFocused || setting->isDragging) ? 1.f : 0.8f);
 										}
 
 										// Drag Logic

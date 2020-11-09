@@ -461,8 +461,8 @@ void DrawUtils::drawKeystroke(char key, vec2_t pos) {
 	vec2_t textPos(
 		(rectPos.x + (rectPos.z - rectPos.x) / 2) - (DrawUtils::getTextWidth(&keyString) / 2.f),
 		rectPos.y + 10.f - DrawUtils::getFont(Fonts::SMOOTH)->getLineHeight() / 2.f);
-	fillRectangle(rectPos, GameData::isKeyDown(key) ? MC_Color(28, 50, 77) : MC_Color(13, 29, 48), 1.f);
-	drawText(textPos, &keyString, MC_Color(255, 255, 255), 1.f, 1.f);
+	fillRectangle(rectPos, GameData::isKeyDown(key) ? MC_Color(0, 0, 0) : MC_Color(13, 29, 48), 1.f);
+	drawText(textPos, &keyString, MC_Color(0, 150, 150), 1.f, 1.f);
 }
 
 vec2_t DrawUtils::worldToScreen(const vec3_t& world) {
